@@ -20,6 +20,9 @@
   "entrypoints": {
     "main": [
       "io.github.javtor.costamod.CostaMod"
+    ],
+    "client": [
+      "io.github.javtor.costamod.CostaClientMod"
     ]
   },
   "mixins": [
