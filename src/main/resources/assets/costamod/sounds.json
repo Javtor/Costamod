@@ -1,0 +1,42 @@
+{
+  "caracoles": {
+    "sounds": [
+      {
+        "name": "costamod:vallenatos/caracoles",
+        "stream": true
+      }
+    ]
+  },
+  "la_plata": {
+    "sounds": [
+      {
+        "name": "costamod:vallenatos/la_plata",
+        "stream": true
+      }
+    ]
+  },
+  "sin_medir": {
+    "sounds": [
+      {
+        "name": "costamod:vallenatos/sin_medir",
+        "stream": true
+      }
+    ]
+  },
+  "valle4": {
+    "sounds": [
+      {
+        "name": "costamod:vallenatos/valle4",
+        "stream": true
+      }
+    ]
+  },
+  "valle5": {
+    "sounds": [
+      {
+        "name": "costamod:vallenatos/valle5",
+        "stream": true
+      }
+    ]
+  }
+}
