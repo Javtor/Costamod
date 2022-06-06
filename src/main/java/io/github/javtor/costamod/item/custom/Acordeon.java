@@ -51,12 +51,12 @@ public class Acordeon extends Item {
         List<SoundEvent> vallenatos = ModSounds.VALLENATOS;
         Random rand = new Random();
         SoundEvent vallenato = vallenatos.get(rand.nextInt(vallenatos.size()));
-        world.playSound(
+        world.playSoundFromEntity(
                 null,
-                user.getBlockPos(),
+                user,
                 vallenato,
                 SoundCategory.RECORDS,
-                10f,
+                2f,
                 1f
         );
     }
