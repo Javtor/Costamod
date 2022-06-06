@@ -16,7 +16,7 @@ import net.minecraft.util.registry.Registry;
 public class ModItems {
 
     public static final Item ACORDEON = registerItem("acordeon",
-            new Acordeon(new FabricItemSettings().group(ModItemGroup.COSTA)));
+            new Acordeon(new FabricItemSettings().group(ModItemGroup.COSTA).maxCount(1)));
 
     public static final Item SOMBRERO_VUELTIAO = registerItem("sombrero_vueltiao",
             new CostaArmorItem(ModArmorMaterials.ACORDEON, EquipmentSlot.HEAD,

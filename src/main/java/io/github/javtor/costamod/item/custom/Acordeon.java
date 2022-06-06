@@ -1,17 +1,29 @@
 package io.github.javtor.costamod.item.custom;
 
+import io.github.javtor.costamod.CostaMod;
 import io.github.javtor.costamod.item.ModItems;
 import io.github.javtor.costamod.sound.ModSounds;
+import io.github.javtor.costamod.util.AudioUtil;
+import net.minecraft.client.item.TooltipContext;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.MusicDiscItem;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.text.LiteralText;
+import net.minecraft.text.Text;
+import net.minecraft.text.TranslatableText;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.*;
 
 public class Acordeon extends Item {
@@ -22,8 +34,15 @@ public class Acordeon extends Item {
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         if (!world.isClient) {
+            ItemStack stack = user.getStackInHand(hand);
             if (isCosteno(user)) {
-                playRandomVallenato(world, user);
+                if(stack.hasNbt()) {
+                    long remaining = stack.getNbt().getLong(CostaMod.MODID + ".remaining");
+                    remaining = remaining / 1000;
+                    user.sendMessage(new LiteralText(remaining+" segundos restantes"), true);
+                } else {
+                    playRandomVallenato(world, user, stack);
+                }
             } else {
                 user.sendMessage(new LiteralText("No eres lo suficientemente costeño"), true);
             }
@@ -47,10 +66,13 @@ public class Acordeon extends Item {
                 ModItems.CAMISETA_JUNIOR));
     }
 
-    private void playRandomVallenato(World world, PlayerEntity user){
+    private void playRandomVallenato(World world, PlayerEntity user, ItemStack stack) {
         List<SoundEvent> vallenatos = ModSounds.VALLENATOS;
         Random rand = new Random();
         SoundEvent vallenato = vallenatos.get(rand.nextInt(vallenatos.size()));
+
+        addVallenatoNbt(vallenato, stack);
+
         world.playSoundFromEntity(
                 null,
                 user,
@@ -59,5 +81,58 @@ public class Acordeon extends Item {
                 2f,
                 1f
         );
+    }
+
+    private void addVallenatoNbt(SoundEvent vallenato, ItemStack stack) {
+        CostaMod.LOGGER.info("Adding vallenato nbt");
+        if(stack.getItem() == ModItems.ACORDEON) {
+            NbtCompound nbtData = new NbtCompound();
+
+            File vallenatoFile = AudioUtil.getVallenatoOggFile(vallenato.getId().getPath());
+            long duration = 15000;
+            try {
+                duration = (long) AudioUtil.calculateOggDuration(vallenatoFile) +1;
+                nbtData.putLong(CostaMod.MODID+".remaining", duration);
+            } catch (IOException e) {
+                CostaMod.LOGGER.error("Error reading vallenato file: " + vallenatoFile.getAbsolutePath());
+            }
+
+            MusicDiscItem item = ModMusicDiscItem.bySound(vallenato);
+            if(item != null) {
+                nbtData.putString(CostaMod.MODID+".song", item.getTranslationKey());
+            }
+            stack.setNbt(nbtData);
+        }
+
+    }
+
+    @Override
+    public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
+        if(!world.isClient) {
+            if(stack.hasNbt()) {
+                long remaining = stack.getNbt().getLong(CostaMod.MODID+".remaining");
+                remaining -= 50;
+                stack.getNbt().putLong(CostaMod.MODID+".remaining", remaining);
+                if(remaining <= 0) {
+                    stack.setNbt(new NbtCompound());
+                }
+            }
+        }
+    }
+
+    @Override
+    public boolean hasGlint(ItemStack stack) {
+        return stack.hasNbt();
+    }
+
+    @Override
+    public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
+        if(stack.hasNbt()) {
+            String song = stack.getNbt().getString(CostaMod.MODID+".song");
+            long remaining = stack.getNbt().getLong(CostaMod.MODID+".remaining");
+            remaining = remaining / 1000;
+            tooltip.add(new TranslatableText(song));
+            tooltip.add(new LiteralText(remaining+" s"));
+        }
     }
 }
