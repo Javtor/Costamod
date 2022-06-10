@@ -1,5 +1,6 @@
 package io.github.javtor.costamod;
 
+import io.github.javtor.costamod.entity.ModEntities;
 import io.github.javtor.costamod.item.ModItems;
 import net.fabricmc.api.ModInitializer;
 import org.slf4j.Logger;
@@ -14,6 +15,7 @@ public class CostaMod implements ModInitializer {
 	public void onInitialize() {
 		LOGGER.info("Initializing CostaMod");
 		ModItems.registerModItems();
+		ModEntities.registerModEntities();
 
 		GeckoLib.initialize();
 	}

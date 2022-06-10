@@ -1,6 +1,7 @@
 package io.github.javtor.costamod.item;
 
 import io.github.javtor.costamod.CostaMod;
+import io.github.javtor.costamod.entity.ModEntities;
 import io.github.javtor.costamod.item.custom.Acordeon;
 import io.github.javtor.costamod.item.custom.CostaArmorItem;
 import io.github.javtor.costamod.item.custom.ModMusicDiscItem;
@@ -10,6 +11,7 @@ import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.MusicDiscItem;
+import net.minecraft.item.SpawnEggItem;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
@@ -24,6 +26,10 @@ public class ModItems {
 
     public static final Item CAMISETA_JUNIOR = registerItem("camiseta_junior",
             new CostaArmorItem(ModArmorMaterials.ACORDEON, EquipmentSlot.CHEST,
+                    new FabricItemSettings().group(ModItemGroup.COSTA)));
+
+    public static final Item DIOMEDES_SPAWN_EGG = registerItem("diomedes_spawn_egg",
+            new SpawnEggItem(ModEntities.DIOMEDES, 16711680, 12623485,
                     new FabricItemSettings().group(ModItemGroup.COSTA)));
 
     public static final Item CARACOLES_MUSIC_DISC = registerItem("caracoles_music_disc",

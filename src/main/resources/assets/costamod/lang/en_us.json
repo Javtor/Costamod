@@ -10,6 +10,11 @@
   "item.costamod.valle_4_music_disc": "Vallenato 4",
   "item.costamod.valle_5_music_disc": "Vallenato 5",
 
+  "item.costamod.diomedes_spawn_egg": "Diomedes Spawn Egg",
 
-  "itemGroup.costamod.costa" : "Costa"
+
+  "itemGroup.costamod.costa" : "Costa",
+
+
+  "entity.costamod.diomedes" : "Diomedes"
 }
