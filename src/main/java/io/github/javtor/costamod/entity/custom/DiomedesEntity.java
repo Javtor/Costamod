@@ -11,6 +11,7 @@ import java.util.UUID;
 import java.util.function.Predicate;
 
 import io.github.javtor.costamod.entity.ai.DiomedesAttackGoal;
+import io.github.javtor.costamod.sound.ModSounds;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.Entity;
@@ -154,17 +155,17 @@ public class DiomedesEntity
 
     @Override
     protected SoundEvent getAmbientSound() {
-        return SoundEvents.ENTITY_ZOMBIE_AMBIENT;
+        return ModSounds.ENTITY_DIOMEDES_AMBIENT;
     }
 
     @Override
     protected SoundEvent getHurtSound(DamageSource source) {
-        return SoundEvents.ENTITY_ZOMBIE_HURT;
+        return ModSounds.ENTITY_DIOMEDES_HURT;
     }
 
     @Override
     protected SoundEvent getDeathSound() {
-        return SoundEvents.ENTITY_ZOMBIE_DEATH;
+        return ModSounds.ENTITY_DIOMEDES_DEATH;
     }
 
     protected SoundEvent getStepSound() {

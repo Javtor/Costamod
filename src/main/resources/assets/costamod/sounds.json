@@ -38,5 +38,26 @@
         "stream": true
       }
     ]
+  },
+
+  "entity_diomedes_ambient": {
+    "sounds": [
+      "costamod:diomedes/paloma",
+      "costamod:diomedes/iaio",
+      "costamod:diomedes/uh"
+    ]
+  },
+  "entity_diomedes_hurt": {
+    "sounds": [
+      "costamod:diomedes/a2",
+      "costamod:diomedes/a3",
+      "costamod:diomedes/a4"
+    ]
+  },
+  "entity_diomedes_death": {
+    "sounds": [
+      "costamod:diomedes/aguila",
+      "costamod:diomedes/eviten"
+    ]
   }
 }

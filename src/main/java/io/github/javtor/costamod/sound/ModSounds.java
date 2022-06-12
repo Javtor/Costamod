@@ -10,7 +10,9 @@ import java.util.List;
 
 public class ModSounds {
 
-    public static SoundEvent AGUILA = registerSoundEvent("aguila");
+    public static SoundEvent ENTITY_DIOMEDES_AMBIENT = registerSoundEvent("entity_diomedes_ambient");
+    public static SoundEvent ENTITY_DIOMEDES_HURT = registerSoundEvent("entity_diomedes_hurt");
+    public static SoundEvent ENTITY_DIOMEDES_DEATH = registerSoundEvent("entity_diomedes_death");
 
     public static SoundEvent CARACOLES = registerSoundEvent("caracoles");
     public static SoundEvent LA_PLATA = registerSoundEvent("la_plata");
