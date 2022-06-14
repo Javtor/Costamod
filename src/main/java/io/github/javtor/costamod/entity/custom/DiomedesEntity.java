@@ -229,5 +229,9 @@ public class DiomedesEntity
         return ItemStack.EMPTY;
     }
 
+    public static boolean canSpawn(EntityType<DiomedesEntity> type, ServerWorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random){
+        return DiomedesEntity.canSpawnInDark(type, world, spawnReason, pos, random) && (spawnReason == SpawnReason.SPAWNER || world.isSkyVisible(pos));
+    }
+
 }
 

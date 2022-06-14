@@ -24,6 +24,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.*;
 
 public class Acordeon extends Item {
@@ -88,14 +89,14 @@ public class Acordeon extends Item {
         if(stack.getItem() == ModItems.ACORDEON) {
             NbtCompound nbtData = new NbtCompound();
 
-            File vallenatoFile = AudioUtil.getVallenatoOggFile(vallenato.getId().getPath());
+            //InputStream vallenatoStream = AudioUtil.getVallenatoOggStream(vallenato.getId().getPath());
             long duration = 15000;
-            try {
-                duration = (long) AudioUtil.calculateOggDuration(vallenatoFile) +1;
-                nbtData.putLong(CostaMod.MODID+".remaining", duration);
+            /*try {
+                duration = (long) AudioUtil.calculateOggDuration(vallenatoStream) +1;
             } catch (IOException e) {
-                CostaMod.LOGGER.error("Error reading vallenato file: " + vallenatoFile.getAbsolutePath());
-            }
+                CostaMod.LOGGER.error("Error reading vallenato stream");
+            }*/
+            nbtData.putLong(CostaMod.MODID+".remaining", duration);
 
             MusicDiscItem item = ModMusicDiscItem.bySound(vallenato);
             if(item != null) {

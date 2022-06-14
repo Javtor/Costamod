@@ -5,19 +5,19 @@ import com.google.common.io.Resources;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URISyntaxException;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 
 public class AudioUtil {
-    public static double calculateOggDuration(final File oggFile) throws IOException {
+    public static double calculateOggDuration(final InputStream stream) throws IOException {
         int rate = -1;
         int length = -1;
 
-        int size = (int) oggFile.length();
+        int size = (int) stream.available();
         byte[] t = new byte[size];
 
-        FileInputStream stream = new FileInputStream(oggFile);
         stream.read(t);
 
         for (int i = size-1-8-2-4; i>=0 && length<0; i--) { //4 bytes for "OggS", 2 unused bytes, 8 bytes for length
@@ -57,12 +57,8 @@ public class AudioUtil {
         return duration;
     }
 
-    public static File getVallenatoOggFile(String path){
-        try {
-            return new File(Resources.getResource("assets/costamod/sounds/vallenatos/" + path + ".ogg").toURI());
-        } catch (URISyntaxException e) {
-            throw new RuntimeException(e);
-        }
-
+    public static InputStream getVallenatoOggStream(final String file){
+        String path = "assets/costamod/sounds/vallenatos/" + file + ".ogg";
+        return AudioUtil.class.getClassLoader().getResourceAsStream(path);
     }
 }

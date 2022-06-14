@@ -14,9 +14,9 @@ public class ModEntitySpawn {
 
     public static void addEntitySpawn(){
         BiomeModifications.addSpawn(BiomeSelectors.categories(Biome.Category.BEACH),
-                SpawnGroup.MONSTER, ModEntities.DIOMEDES, 20, 1, 1);
+                SpawnGroup.MONSTER, ModEntities.DIOMEDES, 100, 1, 1);
 
         SpawnRestrictionAccessor.callRegister(ModEntities.DIOMEDES, SpawnRestriction.Location.ON_GROUND,
-                Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, DiomedesEntity::canSpawnInDark);
+                Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, DiomedesEntity::canSpawn);
     }
 }
