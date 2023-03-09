@@ -20,7 +20,7 @@ public class ModItems {
 
     public static final RegistryObject<Item> ACORDEON =
             ITEMS.register("acordeon",
-                    () -> new Acordeon(new Item.Properties().tab(ModCreativeModeTab.COSTAMOD_TAB)));
+                    () -> new Acordeon(new Item.Properties().tab(ModCreativeModeTab.COSTAMOD_TAB).stacksTo(1)));
 
     public static final RegistryObject<Item> SOMBRERO_VUELTIAO =
             ITEMS.register("sombrero_vueltiao",
