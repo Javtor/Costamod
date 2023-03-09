@@ -43,13 +43,6 @@ public class Acordeon extends Item {
         List<RegistryObject<SoundEvent>> vallenatos = ModSounds.VALLENATOS;
         int random = (int) (Math.random() * vallenatos.size());
         SoundEvent vallenato = vallenatos.get(random).get();
-        pLevel.playSound(
-                null,
-                pPlayer.blockPosition(),
-                vallenato,
-                pPlayer.getSoundSource(),
-                10f,
-                1f
-        );
+        pLevel.playSound(null, pPlayer, vallenato, pPlayer.getSoundSource(), 2.0F, 1.0F);
     }
 }
