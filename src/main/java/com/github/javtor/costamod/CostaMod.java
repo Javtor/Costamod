@@ -1,6 +1,7 @@
 package com.github.javtor.costamod;
 
 import com.github.javtor.costamod.item.ModItems;
+import com.github.javtor.costamod.sound.ModSounds;
 import com.mojang.logging.LogUtils;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.api.distmarker.Dist;
@@ -25,6 +26,7 @@ public class CostaMod {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         ModItems.register(modEventBus);
+        ModSounds.register(modEventBus);
 
         GeckoLib.initialize();
 
