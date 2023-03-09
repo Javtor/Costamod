@@ -1,5 +1,6 @@
 package com.github.javtor.costamod.item;
 
+import com.github.javtor.costamod.CostaMod;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.LazyLoadedValue;
@@ -57,7 +58,7 @@ public enum ModArmorMaterials implements ArmorMaterial {
     }
 
     public String getName() {
-        return this.name;
+        return CostaMod.MOD_ID + ":" + this.name;
     }
 
     public float getToughness() {
