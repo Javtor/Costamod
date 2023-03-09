@@ -1,0 +1,63 @@
+{
+  "caracoles": {
+    "sounds": [
+      {
+        "name": "costamod:vallenatos/caracoles",
+        "stream": true
+      }
+    ]
+  },
+  "la_plata": {
+    "sounds": [
+      {
+        "name": "costamod:vallenatos/la_plata",
+        "stream": true
+      }
+    ]
+  },
+  "sin_medir": {
+    "sounds": [
+      {
+        "name": "costamod:vallenatos/sin_medir",
+        "stream": true
+      }
+    ]
+  },
+  "valle4": {
+    "sounds": [
+      {
+        "name": "costamod:vallenatos/valle4",
+        "stream": true
+      }
+    ]
+  },
+  "valle5": {
+    "sounds": [
+      {
+        "name": "costamod:vallenatos/valle5",
+        "stream": true
+      }
+    ]
+  },
+
+  "entity_diomedes_ambient": {
+    "sounds": [
+      "costamod:diomedes/paloma",
+      "costamod:diomedes/iaio",
+      "costamod:diomedes/uh"
+    ]
+  },
+  "entity_diomedes_hurt": {
+    "sounds": [
+      "costamod:diomedes/a2",
+      "costamod:diomedes/a3",
+      "costamod:diomedes/a4"
+    ]
+  },
+  "entity_diomedes_death": {
+    "sounds": [
+      "costamod:diomedes/aguila",
+      "costamod:diomedes/eviten"
+    ]
+  }
+}
